@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { ProductContract } from "../contracts/ProductContract";
+import  Button  from "@mui/material/Button";
 
 export function ProductComponent() {
     const [product, setProduct] = useState<ProductContract>()
@@ -11,8 +12,12 @@ export function ProductComponent() {
             Stock: true
         })
     }, [])
+
+    function handleClick() {
+        alert("Registered")
+    }
     return (
-        <div>
+        <div style={{'marginLeft' : '20px'}}>
             <dl>
                 <dt>Name</dt>
                 <dd>{product?.Name}</dd>
@@ -21,6 +26,7 @@ export function ProductComponent() {
                 <dt>Stock</dt>
                 <dd>{(product?.Stock) ? "Available" : "Out of Stock"}</dd>
             </dl>
+            <Button onClick={handleClick} variant="contained" color="primary">Register</Button>
         </div>
     )
 }
